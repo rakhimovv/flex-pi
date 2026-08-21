@@ -26,7 +26,7 @@ The cost is a small bounded buffer (~3 chunks) and the first few frames
 are written once the warmup window closes.
 
 The real-world observation stream at full action rate is recorded
-*bridge-side* (``yam_raiden_bridge_ws`` ``record_observation_dir``).
+*client-side* (the robot client's ``record_observation_dir``).
 """
 
 from __future__ import annotations

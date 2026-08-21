@@ -11,7 +11,7 @@
 #
 # Explicit call-site arguments win over this file, so it sets the floor rather
 # than pinning behavior. Consumed by deploy_policy.py
-# (build_policy_from_checkpoint) and yam_raiden_bridge.py (replan_steps).
+# (build_policy_from_checkpoint) and the websocket policy server.
 
 EVALUATION:
   # Device / precision.

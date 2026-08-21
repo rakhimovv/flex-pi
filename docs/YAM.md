@@ -118,9 +118,8 @@ Norm statistics are fit fresh on the first run and cached into the run directory
 ## 3. Deploy server
 
 Two processes: a **policy server** that holds the GPU and serves action chunks
-over a websocket, and a **client** that owns the robot. A reference client for a
-YAM arm through raiden is
-[`experiments/yam/flexpi_policy/yam_raiden_bridge_ws.py`](../experiments/yam/flexpi_policy/yam_raiden_bridge_ws.py).
+over a websocket, and a **client** that owns the robot. The server is here; the
+client is yours to write, against the [wire contract](#wire-contract) below.
 
 ### What you need
 
