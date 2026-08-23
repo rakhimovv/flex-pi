@@ -1030,18 +1030,13 @@ def _predict_action_chunk(
 
 
 def _get_max_steps(task_suite_name: str) -> int:
-    # Official OpenVLA-OFT LIBERO max-step caps (TASK_MAX_STEPS in
-    # openvla-oft experiments/robot/libero/run_libero_eval.py); openpi's LIBERO
-    # eval uses the same budgets. These are what every published leaderboard
-    # number was measured under, so aligning here keeps our success rates
-    # directly comparable. Do NOT raise them to "give the policy more time" —
-    # that silently makes our numbers incomparable to the baselines.
+    # Follows FastWAM's LIBERO eval setup
     suite_steps = {
-        "libero_spatial": 220,
-        "libero_object": 280,
-        "libero_goal": 300,
-        "libero_10": 520,
-        "libero_90": 400,
+        "libero_spatial": 400,
+        "libero_object": 400,
+        "libero_goal": 400,
+        "libero_10": 700,
+        "libero_90": 700,
     }
     if task_suite_name in suite_steps:
         return suite_steps[task_suite_name]

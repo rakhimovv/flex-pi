@@ -150,10 +150,18 @@ fi
 # ── Output dir / run id ───────────────────────────────────────────────────────
 TASK_BASENAME="${TASK_CONFIG}"
 
-REGIME_TAG="flex_pv${FLEX_P_PRESENT_VIDEO}_pd${FLEX_P_PRESENT_DINO}_pp${FLEX_P_PRESENT_POINTMAP}_jv${FLEX_P_JV}_jd${FLEX_P_JD}_jp${FLEX_P_JP}"
 # A 2D run arrives as a passthrough override, so the FLEX_P_* knobs above cannot
-# see it — and under enable_pointmap=false the pp/jp halves of the tag are inert.
-[[ " ${*,,} " == *"model.enable_pointmap=false "* ]] && REGIME_TAG="${REGIME_TAG}_2d"
+# see it directly — detect it here instead.
+_POINTMAP_DISABLED=0
+[[ " ${*,,} " == *"model.enable_pointmap=false "* ]] && _POINTMAP_DISABLED=1
+
+if [[ "${_POINTMAP_DISABLED}" == "1" ]]; then
+  # enable_pointmap=false forces the stream off whatever p_present_pointmap/p_jp
+  # say, so tag those NA rather than print a probability that never applied.
+  REGIME_TAG="flex_pv${FLEX_P_PRESENT_VIDEO}_pd${FLEX_P_PRESENT_DINO}_ppNA_jv${FLEX_P_JV}_jd${FLEX_P_JD}_jpNA_2d"
+else
+  REGIME_TAG="flex_pv${FLEX_P_PRESENT_VIDEO}_pd${FLEX_P_PRESENT_DINO}_pp${FLEX_P_PRESENT_POINTMAP}_jv${FLEX_P_JV}_jd${FLEX_P_JD}_jp${FLEX_P_JP}"
+fi
 [[ "${COMPOSITE_LAYOUT}" != "tshape_384x320" ]] && REGIME_TAG="${REGIME_TAG}_${COMPOSITE_LAYOUT}"
 [[ "${DINO_TEMPORAL_STRIDE}" != "1" ]] && REGIME_TAG="${REGIME_TAG}_ds${DINO_TEMPORAL_STRIDE}"
 [[ -n "${NUM_EPOCHS}" ]] && REGIME_TAG="${REGIME_TAG}_epoch${NUM_EPOCHS}"

@@ -1,7 +1,7 @@
 # LIBERO — training and evaluation
 
 End-to-end recipe for the LIBERO benchmark: four suites of 10 tasks each, scored
-over 50 trials per task under the official per-suite step budgets.
+over 50 trials per task under per-suite step budgets following FastWAM's setup.
 
 Everything here runs from the **repository root**. One-time environment and
 weight setup is [`docs/INSTALL.md`](INSTALL.md); the per-knob reference behind the

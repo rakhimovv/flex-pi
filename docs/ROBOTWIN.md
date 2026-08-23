@@ -178,9 +178,9 @@ python experiments/robotwin/run_robotwin_manager.py task=... ckpt=... \
   +EVALUATION.infer_joint_pointmap=true
 ```
 
-`eval_num_inference_steps` (repo default 10) sets the flow-matching Euler steps; 4
-runs ~2&times; faster at close to the same success rate. The measured latency stacks
-and the TensorRT builds are in
+`EVALUATION.num_inference_steps` sets the flow-matching Euler steps, and the eval
+config pins it to 4 — ~2&times; faster than 10 at close to the same success rate. The
+measured latency stacks and the TensorRT builds are in
 [`INFERENCE_OPTIMIZATION.md`](INFERENCE_OPTIMIZATION.md).
 
 ---

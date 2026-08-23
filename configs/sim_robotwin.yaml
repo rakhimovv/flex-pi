@@ -25,7 +25,7 @@ EVALUATION:
   # Action inference
   action_horizon: null
   replan_steps: 32
-  num_inference_steps: ${eval_num_inference_steps}
+  num_inference_steps: 4
   sigma_shift: null
   text_cfg_scale: 1.0
   negative_prompt: ""

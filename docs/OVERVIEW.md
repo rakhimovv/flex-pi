@@ -144,9 +144,9 @@ flow-matching ODE over the **active output streams only** and emits an action ch
 of length H=32, of which `EVALUATION.replan_steps` are executed before
 re-planning — 32 everywhere except LIBERO, which replans every 10.
 
-`K` is `eval_num_inference_steps` (repo default 10). The paper sweeps it and uses
-K=4: action-only success peaks there and stays within 1.0 point of the peak for
-every K ≥ 2.
+`K` is `EVALUATION.num_inference_steps`, which every eval config pins to 4. The
+paper sweeps it and uses K=4: action-only success peaks there and stays within
+1.0 point of the peak for every K ≥ 2.
 
 Dropping every visual output stream gives the action-only path — the cheapest mode,
 ~60 ms per call on an RTX 5090, and still ahead of every baseline we measured.
